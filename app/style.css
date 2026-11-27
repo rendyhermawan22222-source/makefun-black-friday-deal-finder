@@ -1,0 +1,212 @@
+/* Black Friday Hound — paper, ink and one loud red.
+   No web fonts, no images from the network: the only picture is the inline
+   SVG hound in index.html. Everything here is system type and CSS. */
+
+:root {
+  --paper: #faf6ef;
+  --card: #fffdf8;
+  --ink: #1a1714;
+  --muted: #6b6259;
+  --line: #e3d9c8;
+  --red: #c1272d;
+  --red-dark: #9a1e23;
+  --amber: #8a5a00;
+  --amber-bg: #fdf0c8;
+  --green: #1e6b34;
+  --green-bg: #dcf2e2;
+  --blue: #1d4e89;
+  --blue-bg: #ddebfc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a { color: var(--blue); }
+a:hover { color: var(--red-dark); }
+
+/* Masthead */
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--paper); }
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-text strong { font-size: 20px; letter-spacing: 0.06em; }
+.brand-text span { font-size: 13px; color: #d8cdbb; font-style: italic; }
+.masthead nav { display: flex; gap: 4px; }
+.masthead nav a {
+  color: var(--paper);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.masthead nav a:hover { background: #33302c; color: #fff; }
+
+/* Page */
+
+main { max-width: 1080px; margin: 0 auto; padding: 24px 20px 40px; }
+h1 { font-size: 30px; line-height: 1.2; margin: 8px 0 12px; letter-spacing: -0.01em; }
+h2 { font-size: 20px; margin: 28px 0 8px; }
+.lede { font-size: 17px; color: #3d3831; max-width: 72ch; }
+.back { margin: 0 0 4px; }
+footer {
+  border-top: 1px solid var(--line);
+  padding: 18px 20px 28px;
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+footer p { margin: 4px 0; }
+
+/* Controls */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  align-items: end;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 18px 0 8px;
+}
+.controls label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.controls input[type="search"], .controls select {
+  font: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid #c9bda8;
+  border-radius: 6px;
+  padding: 8px 10px;
+  min-width: 150px;
+}
+.controls input[type="search"] { min-width: 220px; }
+.controls input:focus, .controls select:focus { outline: 2px solid var(--red); outline-offset: 1px; }
+.count { color: var(--muted); font-size: 14px; margin: 6px 0 14px; }
+
+/* Deal cards */
+
+.deals { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.card-title { font-size: 17px; font-weight: 700; line-height: 1.3; color: var(--ink); text-decoration: none; }
+.card-title:hover { color: var(--red); text-decoration: underline; }
+.card-store { margin: 0; color: var(--muted); font-size: 14px; }
+.card-price { margin: 2px 0; font-size: 15px; }
+.card-price strong { font-size: 26px; color: var(--red); letter-spacing: -0.01em; }
+.card-price s { color: var(--muted); margin-left: 4px; }
+.card-off { display: block; font-size: 14px; font-weight: 700; color: var(--green); margin-top: 2px; }
+.card-meta { margin: 2px 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.score { font-size: 13px; font-weight: 700; color: var(--ink); background: #efe7d6; border-radius: 999px; padding: 2px 9px; }
+.card-checked { margin: 0; font-size: 13px; color: var(--muted); }
+.card-actions { margin: 8px 0 0; display: flex; gap: 10px; flex-wrap: wrap; }
+.empty { grid-column: 1 / -1; background: var(--card); border: 1px dashed var(--line); border-radius: 10px; padding: 24px; color: var(--muted); }
+
+/* Signal badges */
+
+.signal { font-size: 12px; font-weight: 800; letter-spacing: 0.05em; border-radius: 4px; padding: 3px 8px; }
+.signal-new-low { background: var(--amber-bg); color: var(--amber); border: 1px solid #d9b64a; }
+.signal-strong { background: var(--green-bg); color: var(--green); border: 1px solid #8ec9a4; }
+.signal-good { background: var(--blue-bg); color: var(--blue); border: 1px solid #9dbfe3; }
+.signal-routine { background: #eee; color: var(--muted); border: 1px solid #ccc; }
+
+/* Buttons */
+
+.btn {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 9px 14px;
+}
+.btn:hover { background: var(--red-dark); color: #fff; }
+.btn-ghost { background: transparent; color: var(--blue); border: 1px solid #b9c8dc; font-weight: 600; }
+.btn-ghost:hover { background: var(--blue-bg); color: var(--blue); }
+
+/* Detail page */
+
+.detail { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 22px 24px; }
+.detail h1 { margin-top: 0; }
+.detail-store { color: var(--muted); margin: 0 0 8px; }
+.detail-price strong { font-size: 34px; color: var(--red); }
+.detail-price s { color: var(--muted); font-size: 18px; margin-left: 6px; }
+.detail-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 10px 0 4px; }
+.evidence { background: var(--amber-bg); border-left: 4px solid #d9b64a; padding: 12px 14px; border-radius: 0 6px 6px 0; }
+.note { color: var(--muted); font-size: 14px; }
+.alt { background: var(--blue-bg); border-left: 4px solid #9dbfe3; padding: 12px 14px; border-radius: 0 6px 6px 0; }
+.facts { display: grid; grid-template-columns: 110px 1fr; gap: 4px 12px; margin: 18px 0; }
+.facts dt { font-weight: 700; color: var(--muted); }
+.facts dd { margin: 0; }
+
+/* Compare page */
+
+.vs { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin: 16px 0; }
+.vs h2 { margin-top: 0; }
+.vs-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; }
+.vs-side { border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; text-align: center; }
+.vs-side.winner { border-color: var(--green); background: var(--green-bg); }
+.vs-store { font-weight: 700; margin: 0 0 4px; }
+.vs-price { font-size: 30px; font-weight: 800; color: var(--red); margin: 0 0 8px; }
+.vs-mid { font-weight: 800; color: var(--muted); margin: 0; }
+.bone { font-size: 12px; background: var(--green); color: #fff; border-radius: 999px; padding: 2px 8px; text-transform: uppercase; letter-spacing: 0.04em; }
+.vs-nolink { font-size: 13px; color: var(--muted); }
+.vs-note { color: var(--muted); font-size: 14px; }
+
+/* How / about */
+
+.how { margin-top: 28px; border-top: 1px solid var(--line); padding-top: 8px; }
+.how p { max-width: 78ch; }
+.plain { max-width: 78ch; }
+.plain li { margin-bottom: 8px; }
+
+/* Phone */
+
+@media (max-width: 640px) {
+  body { font-size: 15px; }
+  main { padding: 16px 14px 32px; }
+  h1 { font-size: 24px; }
+  .masthead { padding: 12px 14px; }
+  .brand-text strong { font-size: 17px; }
+  .controls { padding: 12px; }
+  .controls input[type="search"] { min-width: 0; width: 100%; }
+  .controls label { flex: 1 1 45%; }
+  .controls label:first-child { flex-basis: 100%; }
+  .deals { grid-template-columns: 1fr; }
+  .card-price strong { font-size: 24px; }
+  .detail { padding: 16px; }
+  .detail-price strong { font-size: 30px; }
+  .vs-grid { grid-template-columns: 1fr; }
+  .vs-mid { text-align: center; }
+  .facts { grid-template-columns: 90px 1fr; }
+}
